@@ -1,6 +1,7 @@
 # Binaries 
 #  usually too large for github
 *.bin
+*.data
 
 # Prerequisites
 *.d
