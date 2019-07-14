@@ -1,3 +1,9 @@
+# Ignore MITgcm since it's a repo...
+MITgcm
+
+# Ignore build directory
+build*
+
 # Binaries 
 #  usually too large for github
 *.bin
