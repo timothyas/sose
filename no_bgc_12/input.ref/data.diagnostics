@@ -13,6 +13,8 @@
  &diagnostics_list
 # diag_mnc     = .FALSE.,
 # do not specify levels => all levels are selected
+    dumpatlast = .true.,
+    diagMdsDir = 'diags/',
 #---
    frequency(1) = 432000.0,
    fields(1,1) = 'THETA   ',
