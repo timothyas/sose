@@ -1,0 +1,160 @@
+#!/bin/bash
+
+## Set up suffix for adjoint run: "_ad"
+#  or leave as "" for forward run
+suff=""
+build_suff=""
+input_suff=".ref"
+run_suff=$input_suff
+use_masks=""
+use_perturbation=""
+use_extra_ctrls=""
+use_binaries="true"
+
+## Set up directories
+root_dir=$WORK/sose/MITgcm
+
+exp_dir=$PWD
+build_dir=$exp_dir/build$suff$build_suff
+code_dir=$exp_dir/code$suff$build_suff
+
+input_dir=$exp_dir/input$suff$input_suff
+run_dir=$exp_dir/run$suff$run_suff
+
+submit_script=$exp_dir/submit_sose$suff
+
+## Set optional directories 
+masks_dir=
+perturb_dir=
+ctrl_dir=
+binarydir=$exp_dir/bin
+forcingdir=/nobackup/hzhang1/forcing/era5
+
+
+## Make work directory in SCRATCH
+if [ ! -d $run_dir ] ; then
+	echo "Making "$run_dir" ..."
+    mkdir $run_dir
+    mkdir $run_dir/diags
+    mkdir $run_dir/tapes
+    mkdir $run_dir/profiles
+fi       
+
+## Link ALL of the files
+echo "Grabbing necessary files ..."
+
+#-------------------------------------------------
+# Submission script
+#-------------------------------------------------
+cp $submit_script $run_dir
+
+#-------------------------------------------------
+# Executable
+#-------------------------------------------------
+ln -sfv $build_dir/mitgcmuv$suff $run_dir
+
+#-------------------------------------------------
+# Namelists
+#-------------------------------------------------
+ln -sf $input_dir/* $run_dir
+
+#-------------------------------------------------
+# binaries, etc, ...
+#-------------------------------------------------
+if [ "$use_binaries" == "true" ] ; then
+    if [ -d "$binarydir" ] ; then
+        echo "** Grabbing all binaries"
+        ln -s ${binarydir}/* $run_dir
+
+    else
+        echo "** Could not find $binarydir ..."
+    fi
+else
+    echo "** ECCO Init data not used..."
+fi
+
+#-------------------------------------------------
+# Forcing
+#-------------------------------------------------
+if [ -d "$forcingdir" ] ; then
+    echo "** Grabbing forcing directory"
+    ln -s ${forcingdir} $run_dir
+else
+    echo "** Could not find $forcingdir ..."
+fi
+
+#-------------------------------------------------
+# Masks
+#-------------------------------------------------
+if [ "$use_masks" == "true" ] ; then
+    if [ -d $masks_dir ] ; then
+        echo "** Grabbing masks ..."
+        ln -sf $masks_dir/* $run_dir
+    else
+      echo "** No masks found in $masks_dir ... "
+    fi
+else
+    echo "** Masks not used ..."
+fi
+
+#-------------------------------------------------
+# Extra Controls
+#-------------------------------------------------
+if [ "$use_extra_ctrls" == "true" ] ; then
+    if [ -d $ctrl_dir ] ; then 
+        echo "** Grabbing extra (zero) controls ..."
+        ln -sf $ctrl_dir/* $run_dir
+    else
+        echo "** No additional control vectors ... "
+    fi
+else
+    echo "** Extra controls not used ..."
+fi
+
+#-------------------------------------------------
+# Perturbation
+#-------------------------------------------------
+if [ "$use_perturbation" == "true" ] ; then 
+    if [ -d $perturb_dir ] ; then
+        echo "** Grabbing perturbation ..."
+        ln -sf $perturb_dir/* $run_dir
+    else
+        echo "** Could not find perturbation directory: $perturb_dir ... "
+    fi
+else
+    echo "** Perturbation not used ..."
+fi
+
+
+echo "Ready to execute ..."
+
+echo ""
+echo "*** Pro tips: "
+echo "      - Check data.pkg: useAUTODIFF = .true.? usePROFILES = .false.? "
+echo ""
+echo "      - Check data: "
+echo "           nTimeSteps correct? tapes directory uncommented? adjDump = false?"
+echo ""
+echo "      - Check data.ctrl ... mult = 0 for non-optimize run? "
+echo "           have the necessary xx_<parameter> files?"
+echo ""
+echo "      - Check data.diagnostics: have the filenames set with diags/ prefix? "
+echo ""
+echo "      - Check data.exf: directory set for correct forcing files? period correct?"
+echo "" 
+echo "      - Check data.ecco: ... just make sure it looks good"
+echo ""
+echo "      - Check to make sure any masks are set properly ... "
+echo ""
+echo "      - Check submit file for .."
+echo "           Correct queue? "
+echo "           forward run: <exec> mitgcmuv "
+echo "           adjoint: <exec> mitgcmuv_ad "
+echo "           walltime correct? " 
+echo "		 DIFFERENT FOR SCRATCH: change workrun directory in submit file "
+echo ""
+echo "Assuming this is done, ready for launch ... "
+echo ""
+echo ""
+echo "Head to $run_dir to run..."
+echo ""

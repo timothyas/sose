@@ -1,0 +1,13 @@
+#PBS -S /bin/bash
+#PBS -N sose
+#PBS -l select=70:ncpus=24:model=has
+#PBS -l walltime=1:00:00
+#PBS -q debug
+#PBS -m be
+#PBS -M timsmith204@utexas.edu
+
+module load comp-intel
+module load mpi-sgi/mpt
+module load hdf4 hdf5 netcdf
+
+mpiexec /u/scicon/tools/bin/gm.x ./mitgcmuv
