@@ -264,8 +264,8 @@
 # Input datasets
  &PARM05
   bathyFile = 'SOSE_12_bathy3.bin',
-  uVelInitFile=   'Uini_SO12_V2.bin',
-  vVelInitFile=   'Vini_SO12_V2.bin',
-  hydrogThetaFile='Tini_SO12_V2.bin',
-  hydrogSaltFile= 'Sini_SO12_V2.bin',
+  uVelInitFile=   'Uini_SO12_V2.data',
+  vVelInitFile=   'Vini_SO12_V2.data',
+  hydrogThetaFile='Tini_SO12_V2.data',
+  hydrogSaltFile= 'Sini_SO12_V2.data',
  /
