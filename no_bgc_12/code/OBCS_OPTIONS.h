@@ -34,7 +34,7 @@ C This includes hooks to sponge layer treatment of uvel, vvel
 #define ALLOW_OBCS_SPONGE
 
 C balance barotropic velocity
-#undef ALLOW_OBCS_BALANCE
+#define ALLOW_OBCS_BALANCE
 
 C     The following five CPP options are experimental and aim to deal
 C     with artifacts due to the low-frequency specification of sea-ice
