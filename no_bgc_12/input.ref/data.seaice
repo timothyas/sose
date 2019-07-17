@@ -10,7 +10,10 @@
       SEAICE_wetIceAlb   = 0.7060,
       SEAICE_drySnowAlb  = 0.8652,
       SEAICE_wetSnowAlb  = 0.8085,
-      SEAICE_waterDrag   = 5.5627,
+# --- See PR #117
+#   water drag is now set explicitly
+#   rather than old way: waterDrag * rhoConstFresh
+      SEAICE_waterDrag   = 0.0055627,
       SEAICE_drag        = 0.00114,
       HO                 = 0.05,
 #
@@ -18,7 +21,11 @@
       SEAICE_wetIceAlb_south  = 0.7284,
       SEAICE_drySnowAlb_south = 0.7754,
       SEAICE_wetSnowAlb_south = 0.7753,
-      SEAICE_waterDrag_south  = 5.6221,
+#      SEAICE_waterDrag_south  = 5.6221,
+# --- See PR #117
+#   water drag is now set explicitly
+#   rather than old way: waterDrag * rhoConstFresh
+      SEAICE_waterDrag_south  = 0.0056221,
       SEAICE_drag_south       = 0.0012114,
 #
       SEAICE_no_slip     = .TRUE.,
