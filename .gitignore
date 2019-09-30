@@ -1,5 +1,5 @@
 # Ignore MITgcm since it's a repo...
-MITgcm
+MITgcm*
 
 # Ignore build and run directory
 build*
