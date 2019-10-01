@@ -79,9 +79,9 @@ CMM  #define EXACT_CONSERV
 
 C o Allow the use of Non-Linear Free-Surface formulation
 C   this implies that surface thickness (hFactors) vary with time
-CMM  #define NONLIN_FRSURF
-CMM  #define DISABLE_RSTAR_CODE
-CMM  #define DISABLE_SIGMA_CODE
+#undef NONLIN_FRSURF
+#define DISABLE_RSTAR_CODE
+#define DISABLE_SIGMA_CODE
 
 C o Include/exclude code for single reduction Conjugate-Gradient solver
 #undef ALLOW_SRCG

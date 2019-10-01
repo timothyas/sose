@@ -15,6 +15,14 @@ Compilation notes, additions to `code_ad` that are different from `code/` and `c
 2. add `iumekey` to `tamc.h` as in `MITgcm/verification/bottom_ctrl_5x5/code_ad.no_nsa/tamc.h`
 3. add `MITgcm/pkg/autodiff/AUTODIFF_OPTIONS.h` to this dir
 4. add `MITgcm/pkg/ecco/ECCO_OPTIONS.h` to this dir
+5. need to be specific with free surface for store directives in `CPP_OPTIONS.h`:
+    ```
+    #undef NONLIN_FRSURF
+    #define DISABLE_RSTAR_CODE
+    #define DISABLE_SIGMA_CODE
+    ```
+
+Compilation notes related to biogeochem stuff
 5. if ptracers are desired as control variables, use `BUP/ctrl_map_ini_genarr.F`. 
     I'm ignoring this for now to avoid the merge with these additions and my depth stuff...
 6. `BUP/ecco_phys.F` differences are not clear to me, continuing with the one in MITgcm since I'm familiar with it
