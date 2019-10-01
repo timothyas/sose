@@ -2,7 +2,7 @@
 
 ## Set up suffix for adjoint run: "_ad"
 #  or leave as "" for forward run
-suff=""
+suff="_ad"
 build_suff=''
 
 ## Set up directories
@@ -14,9 +14,10 @@ code_dir=$exp_dir/code$suff$build_suff
 ## Opt file architecture specific
 #skylake_opt=$computing/optfiles/linux_amd64_ifort+mpi_stampede2_skx
 haswell_opt=$exp_dir/linux_amd64_ifort+mpi_ice_nas_haswell
+adj_132_lines=$exp_dir/adjoint_132
 
 ## Use the correct opt file here
-build_cmd="$root_dir/tools/genmake2 -rd=$root_dir -mods=$code_dir -optfile=$haswell_opt -mpi"
+build_cmd="$root_dir/tools/genmake2 -rd=$root_dir -mods=$code_dir -optfile=$haswell_opt -mpi -adoptfile=$adj_132_lines"
 #tmp="make_junk"$suff".txt"
 
 ## Check which run to set up
