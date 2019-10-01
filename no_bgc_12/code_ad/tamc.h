@@ -1,6 +1,3 @@
-C $Header: /u/gcmpack/MITgcm_contrib/gael/verification/global_oce_llc90/code/tamc.h_itXX,v 1.2 2014/07/01 18:31:54 gforget Exp $
-C $Name:  $
-
 #include "PACKAGES_CONFIG.h"
 
 c     ================================================================
@@ -118,6 +115,7 @@ c     and writing data.
       INTEGER max0, max1, max2, max3
       INTEGER iikey, kkey, passkey, igadkey, 
      &        itdkey, idynkey, igmkey, iptrkey
+     &        iumekey
 
 c     ================================================================
 c     END OF HEADER TAMC
