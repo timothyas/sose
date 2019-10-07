@@ -55,6 +55,8 @@ C     can use 4-byte precision, reducing memory utilisation and
 C     boosting performance because of a smaller working set size.
 C     However, on vector CRAY systems this degrades performance.
 C     Enable to switch REAL4_IS_SLOW from genmake2 (with LET_RS_BE_REAL4):
+C By default this is not defined in makefile, see eesupp/inc/DEF_IN_MAKEFILE...
+#define LET_RS_BE_REAL4
 #ifdef LET_RS_BE_REAL4
 #undef REAL4_IS_SLOW
 #else /* LET_RS_BE_REAL4 */
