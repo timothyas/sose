@@ -1,0 +1,20 @@
+# *******************
+# ECCO cost functions
+# *******************
+ &ECCO_COST_NML
+ cost_iprec=32,
+ cost_yftype='RL',
+ /
+# ***************************
+# ECCO generic cost functions
+# ***************************
+ &ECCO_GENCOST_NML
+ gencost_avgperiod(1)  = 'step',
+ gencost_barfile(1) = 'm_horflux_vol',
+ gencost_mask(1) = 'sose_drake_passage/mask',
+ gencost_name(1) = 'drake_passage',
+ gencost_outputlevel(1)=1,
+ mult_gencost(1) = 1.,
+#
+ /
+#

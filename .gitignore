@@ -1,5 +1,7 @@
 # Ignore MITgcm since it's a repo...
 MITgcm*
+*.tar.gz
+sose_drake_passage*
 
 # Ignore build and run directory
 build*
