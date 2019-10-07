@@ -48,12 +48,16 @@ C o use divided adjoint to split adjoint computations
 
 #undef ALLOW_AUTODIFF_WHTAPEIO
 #undef AUTODIFF_USE_MDSFINDUNITS
-#undef ALLOW_PACKUNPACK_METHOD2
+#define ALLOW_PACKUNPACK_METHOD2
 #undef AUTODIFF_USE_OLDSTORE_3D
 #undef AUTODIFF_USE_OLDSTORE_2D
 
 C o write separate tape files for each ptracer
 #undef AUTODIFF_PTRACERS_SPLIT_FILES
+
+#define ALLOW_DEPTH_CONTROL
+#define ALLOW_DIFFERENTIATE_CG2D_MATRIX
+#define USE_SMOOTH_MIN
 
 C   ==================================================================
 #endif /* ndef ECCO_CPPOPTIONS_H */
