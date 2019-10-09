@@ -1,0 +1,78 @@
+# SEAICE parameters
+# from http://mitgcm.org/viewvc/MITgcm/MITgcm_contrib/llc_hires/llc_2160/input/data.seaice
+#
+ &SEAICE_PARM01
+      SEAICE_multDim     = 7,
+#
+      SEAICEadvScheme = 2,
+#
+      SEAICE_dryIceAlb   = 0.7,
+      SEAICE_wetIceAlb   = 0.7060,
+      SEAICE_drySnowAlb  = 0.8652,
+      SEAICE_wetSnowAlb  = 0.8085,
+# --- See PR #117
+#   water drag is now set explicitly
+#   rather than old way: waterDrag * rhoConstFresh
+      SEAICE_waterDrag   = 0.0055627,
+      SEAICE_drag        = 0.00114,
+      HO                 = 0.05,
+#
+      SEAICE_dryIceAlb_south  = 0.8509,
+      SEAICE_wetIceAlb_south  = 0.7284,
+      SEAICE_drySnowAlb_south = 0.7754,
+      SEAICE_wetSnowAlb_south = 0.7753,
+#      SEAICE_waterDrag_south  = 5.6221,
+# --- See PR #117
+#   water drag is now set explicitly
+#   rather than old way: waterDrag * rhoConstFresh
+      SEAICE_waterDrag_south  = 0.0056221,
+      SEAICE_drag_south       = 0.0012114,
+#
+      SEAICE_no_slip     = .TRUE.,
+# CMM      SEAICEadvScheme    = 7,
+      SEAICEadvScheme    = 30,
+#
+      MIN_ATEMP          = -40.,
+      MIN_TICE           = -40.,
+      SEAICE_area_reg = 0.15,
+      SEAICE_hice_reg = 0.1,
+      IMAX_TICE = 6,
+      SEAICE_EPS = 1.E-8,
+      SEAICE_doOpenWaterMelt = .TRUE.,
+      SEAICE_areaLossFormula = 1,
+      SEAICE_wetAlbTemp  = 0.0,
+      SEAICE_saltFrac    = 0.3,
+#
+      AreaFile  = 'AreaIC_SO12_V0.bin',
+      HeffFile  = 'HeffIC_SO12_V0.bin',
+#      AreaFile           = 'AREA_llc1080_14jan2011_2160x28080_r4',
+#      HsnowFile          = 'HSNOW_llc1080_14jan2011_2160x28080_r4',
+#      HsaltFile          = 'HSALT_llc1080_14jan2011_2160x28080_r4',
+#      HeffFile           = 'HEFF_llc1080_14jan2011_2160x28080_r4',
+#      UiceFile           = 'UICE_llc1080_14jan2011_2160x28080_r4',
+#      ViceFile           = 'VICE_llc1080_14jan2011_2160x28080_r4',
+ /
+
+ &SEAICE_PARM02
+ mult_smrsst       =  0.2
+ mult_smrsss       =  0.2
+ mult_smrarea      =  1.0
+ smrareadatfile = 'SO6input/SO6_IceConc_NASA_05to10.bin',
+ smrareastartdate1  = 20050101,
+ smrareastartdate2  = 00000,
+ smrareaperiod = 86400,
+ wsmrarea0 = 0.5,
+ wmean_smrarea = 0.5,
+ smrarea_errfile = ' ',
+#CMM(
+ costIceStart1 =  20080101,
+ costIceStart2 =  00000,
+ costIceEnd1   =  20120101,
+ costIceEnd2   = 00000,
+#CMM)
+ /
+
+ &SEAICE_PARM03
+ /
+#
+

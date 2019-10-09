@@ -2,6 +2,7 @@
 MITgcm*
 *.tar.gz
 sose_drake_passage*
+sose_dic*
 
 # Ignore build and run directory
 build*

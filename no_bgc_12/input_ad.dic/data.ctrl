@@ -1,0 +1,179 @@
+# *********************
+# ECCO controlvariables
+# *********************
+ &ctrl_nml
+#
+# Some notes on doSinglePrecTapeLev...
+#   - with SOSE, compile with LET_RS_BE_REAL4
+#     in CPP_EEOPTIONS.h
+#     because otherwise tapes are too big, get overflow error
+#     when writing to tapes
+#   - then also set this true
+#   - if _RS=Real*8 then this has to be false, otherwise
+#     TAF writes routines like initialise_variamd with 
+#     this size hard coded as 8, so doSinglePrecTapeLev
+#     causes inconsistent file sizes:
+#   - filePrec first set to 8*(size) , size=8 in this case
+#   - filePrec then re-set to precFloat32 with doSinglePrecTapelev=true
+#   - causes inconsistent file size ...
+# 
+ doSinglePrecTapelev=.TRUE.,
+ ctrlSmoothCorrel2D=.FALSE.,
+ ctrlSmoothCorrel3D=.FALSE.,
+ doinitxx = .TRUE.,
+ doMainUnpack = .FALSE.,
+ /
+#
+# *********************
+# names for ctrl_pack/unpack
+# *********************
+ &ctrl_packnames
+ /
+#
+# *********************
+# names for CTRL_GENARR, CTRL_GENTIM
+# *********************
+ &CTRL_NML_GENARR
+# ---
+# 3D Initial conditions and parameters
+# ---
+#
+ xx_genarr3d_weight(1) = 'wt_ones.data',
+ xx_genarr3d_file(1)='xx_theta',
+ xx_genarr3d_preproc(1,1)='noscaling',
+ mult_genarr3d(1) = 0.,
+#
+ xx_genarr3d_weight(2) = 'wt_ones.data',
+ xx_genarr3d_file(2)='xx_salt',
+ xx_genarr3d_preproc(1,2)='noscaling',
+ mult_genarr3d(2) = 0.,
+# need to recompile with ALLOW_UVEL0/VVEL0_CONTROL
+# xx_genarr3d_weight(3) = 'wt_ones.data',
+# xx_genarr3d_file(3)='xx_uvel',
+# xx_genarr3d_preproc(1,3)='noscaling',
+# mult_genarr3d(3) = 0.,
+##
+# xx_genarr3d_weight(4) = 'wt_ones.data',
+# xx_genarr3d_file(4)='xx_vvel',
+# xx_genarr3d_preproc(1,4)='noscaling',
+# mult_genarr3d(4) = 0.,
+#
+# need to recompile with ALLOW_DIFFKR_CONTROL
+# xx_genarr3d_weight(4) = 'wt_ones.data',
+# xx_genarr3d_file(4)='xx_vvel',
+# xx_genarr3d_preproc(1,4)='noscaling',
+# mult_genarr3d(4) = 0.,
+# 
+# ---
+# 2D Initial conditions and parameters
+# ---
+#
+ xx_genarr2d_weight(1) = 'wt_ones.data',
+ xx_genarr2d_file(1)='xx_etan',
+ xx_genarr2d_preproc(1,1)='noscaling',
+ mult_genarr2d(1)=0.,
+#
+# xx_genarr2d_weight(2) = 'wt_ones.data',
+# xx_genarr2d_file(2)='xx_depth',
+# xx_genarr2d_preproc(1,2)='noscaling',
+# mult_genarr2d(2)=0.,
+#
+#
+# Need to recompile with ALLOW_BOTTOMDRAG_CONTROL
+# xx_genarr2d_weight(3) = 'wt_ones.data',
+# xx_genarr2d_file(3)='xx_bottomdrag',
+# xx_genarr2d_preproc(1,3)='noscaling',
+# mult_genarr2d(3)=0.,
+#
+# ---
+# 2D time varying controls
+# ---
+#
+ xx_gentim2d_weight(1) = 'wt_ones.data',
+ xx_gentim2d_file(1)='xx_apressure',
+ xx_gentim2d_startdate1(1)=20130101,
+ xx_gentim2d_startdate2(1)=30000,
+ xx_gentim2d_period(1)=1209600.0,
+# xx_gentim2d_preproc(1,1)='rmcycle',
+# xx_gentim2d_preproc_i(1,1)=1,
+# xx_gentim2d_preproc(2,1)='smooth',
+ xx_gentim2d_preproc(1,1)='noscaling',
+ mult_gentim2d(1) = 0.,
+#
+ xx_gentim2d_weight(2) = 'wt_ones.data',
+ xx_gentim2d_file(2)='xx_atemp',
+ xx_gentim2d_startdate1(2)=20130101,
+ xx_gentim2d_startdate2(2)=30000,
+ xx_gentim2d_period(2)=1209600.0,
+# xx_gentim2d_preproc(1,2)='rmcycle',
+# xx_gentim2d_preproc_i(1,2)=1,
+# xx_gentim2d_preproc(2,2)='smooth',
+ xx_gentim2d_preproc(1,2)='noscaling',
+ mult_gentim2d(2) = 0.,
+#
+ xx_gentim2d_weight(3) = 'wt_ones.data',
+ xx_gentim2d_file(3)='xx_aqh',
+ xx_gentim2d_startdate1(3)=20130101,
+ xx_gentim2d_startdate2(3)=30000,
+ xx_gentim2d_period(3)=1209600.0,
+# xx_gentim2d_preproc(1,3)='rmcycle',
+# xx_gentim2d_preproc_i(1,3)=1,
+# xx_gentim2d_preproc(2,3)='smooth',
+ xx_gentim2d_preproc(1,3)='noscaling',
+ mult_gentim2d(3) = 0.,
+#
+ xx_gentim2d_weight(3) = 'wt_ones.data',
+ xx_gentim2d_file(3)='xx_precip',
+ xx_gentim2d_startdate1(3)=20130101,
+ xx_gentim2d_startdate2(3)=30000,
+ xx_gentim2d_period(3)=1209600.0,
+# xx_gentim2d_preproc(1,3)='rmcycle',
+# xx_gentim2d_preproc_i(1,3)=1,
+# xx_gentim2d_preproc(2,3)='smooth',
+ xx_gentim2d_preproc(1,3)='noscaling',
+ mult_gentim2d(3) = 0.,
+#
+ xx_gentim2d_weight(4) = 'wt_ones.data',
+ xx_gentim2d_file(4)='xx_uwind',
+ xx_gentim2d_startdate1(4)=20130101,
+ xx_gentim2d_startdate2(4)=30000,
+ xx_gentim2d_period(4)=1209600.0,
+# xx_gentim2d_preproc(1,4)='rmcycle',
+# xx_gentim2d_preproc_i(1,4)=1,
+# xx_gentim2d_preproc(2,4)='smooth',
+ xx_gentim2d_preproc(1,4)='noscaling',
+ mult_gentim2d(4) = 0.,
+#
+ xx_gentim2d_weight(5) = 'wt_ones.data',
+ xx_gentim2d_file(5)='xx_vwind',
+ xx_gentim2d_startdate1(5)=20130101,
+ xx_gentim2d_startdate2(5)=30000,
+ xx_gentim2d_period(5)=1209600.0,
+# xx_gentim2d_preproc(1,5)='rmcycle',
+# xx_gentim2d_preproc_i(1,5)=1,
+# xx_gentim2d_preproc(2,5)='smooth',
+ xx_gentim2d_preproc(1,5)='noscaling',
+ mult_gentim2d(5) = 0.,
+#
+ xx_gentim2d_weight(6) = 'wt_ones.data',
+ xx_gentim2d_file(6)='xx_swdown',
+ xx_gentim2d_startdate1(6)=20130101,
+ xx_gentim2d_startdate2(6)=30000,
+ xx_gentim2d_period(6)=1209600.0,
+# xx_gentim2d_preproc(1,6)='rmcycle',
+# xx_gentim2d_preproc_i(1,6)=1,
+# xx_gentim2d_preproc(2,6)='smooth',
+ xx_gentim2d_preproc(1,6)='noscaling',
+ mult_gentim2d(6) = 0.,
+#
+ xx_gentim2d_weight(7) = 'wt_ones.data',
+ xx_gentim2d_file(7)='xx_lwdown',
+ xx_gentim2d_startdate1(7)=20130101,
+ xx_gentim2d_startdate2(7)=30000,
+ xx_gentim2d_period(7)=1209600.0,
+# xx_gentim2d_preproc(1,7)='rmcycle',
+# xx_gentim2d_preproc_i(1,7)=1,
+# xx_gentim2d_preproc(2,7)='smooth',
+ xx_gentim2d_preproc(1,7)='noscaling',
+ mult_gentim2d(7) = 0.,
+ /

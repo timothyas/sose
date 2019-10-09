@@ -1,0 +1,18 @@
+ &PTRACERS_PARM01
+ PTRACERS_numInUse=1,
+ PTRACERS_useGMRedi=1*.FALSE.,
+ PTRACERS_useKPP=1*.FALSE.,
+ PTRACERS_advScheme=1*30,
+# NOT NEEDED FOR FWD
+ PTRACERS_diffKh=1*5.E2,
+ PTRACERS_diffKr=1*1.E-4,
+ PTRACERS_diffK4=1*1.E8,
+#SWITCH THIS ONE BACK ON
+# PTRACERS_diffKr=1*1.E-5,
+# tracer 1 - dic
+ PTRACERS_names(1)='dic',
+ PTRACERS_long_names(1)='Dissolved Inorganic Carbon',
+ PTRACERS_units(1)='mol C/m^3',
+ PTRACERS_ref(1:104,1) = 104*2.0282,
+ PTRACERS_EvPrRn(1)= 0.,
+ &
