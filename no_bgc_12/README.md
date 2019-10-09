@@ -23,6 +23,7 @@ Compilation notes, additions to `code_ad` that are different from `code/` and `c
     ```
 
 Compilation notes related to biogeochem stuff
+
 5. if ptracers are desired as control variables, use `BUP/ctrl_map_ini_genarr.F`. 
     I'm ignoring this for now to avoid the merge with these additions and my depth stuff...
 6. `BUP/ecco_phys.F` differences are not clear to me, continuing with the one in MITgcm since I'm familiar with it
