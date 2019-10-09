@@ -42,24 +42,14 @@ C     Nr  :: No. points in Z for full process domain.
       PARAMETER (
      &           sNx =  54,
      &           sNy =  60,
-CUSE     &           sNx =  72,
-CUSE     &           sNy =  70,
      &           OLx =   4,
      &           OLy =   4,
      &           nSx =   1,
      &           nSy =   1,
-C     &           nPx =  557,
-C     &           nPx =   48,
-C     &           nPx =  60,
-C     &           nPy =  18,
-CUSE     &           nPx =   878,
-CUSE     &           nPy =   1,
      &           nPx =   280,
      &           nPy =   6,
-C     &           nPy =   14,
      &           Nx  = sNx*nSx*nPx,
      &           Ny  = sNy*nSy*nPy,
-CMM works     &           Nr  =  8)
      &           Nr  =  104)
 
 C     MAX_OLX  - Set to the maximum overlap region size of any array
