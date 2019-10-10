@@ -1,0 +1,1 @@
+../../no_bgc_12/code_ad/DIAGNOSTICS_SIZE.h

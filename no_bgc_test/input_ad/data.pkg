@@ -1,0 +1,11 @@
+# Packages
+ &PACKAGES
+#
+ useCAL         = .TRUE.,
+ useEXF         = .FALSE.,
+ useGGL90       =.TRUE.,
+ useSALT_PlUME  =.TRUE.,
+ useOBCS        = .FALSE.,
+ useDiagnostics = .FALSE.,
+ useSeaice      = .FALSE.,
+ /

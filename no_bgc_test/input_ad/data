@@ -1,0 +1,146 @@
+# ====================
+# | Model parameters |
+# ====================
+#
+# Continuous equation parameters
+ &PARM01
+# diffKhT=1.E0,
+# diffKhS=1.E0,
+ viscA4=1.E8,
+ diffK4T=1.E8,
+ diffK4S=1.E8,
+# bottomDraglinear=1.E-3,
+# viscAh=1.E1,
+# viscAhGrid=1.E-2,
+ viscAz= 1.e-05,
+# DM uses TRUE
+ no_slip_sides = .FALSE.,
+ no_slip_bottom = .FALSE.,
+ diffKzT=1.e-5,
+ diffKzS=1.e-5,
+ beta=1.E-11,
+ tAlpha=2.E-4,
+ sBeta =7.4E-4,
+ viscC4Leith=2.0,
+ viscC4Leithd=2.0,
+ viscA4GridMax=1.0,
+ useAreaViscLength=.TRUE.,
+ highOrderVorticity  = .TRUE.,
+ bottomDragQuadratic = 0.002,
+#when using ggl90
+  ivdc_kappa=10.,
+# tempAdvScheme=7,
+# saltAdvScheme=7,
+#CMM(
+ tempVertAdvScheme=3,
+ saltVertAdvScheme=3,
+ tempImplVertAdv=.TRUE.,
+ saltImplVertAdv=.TRUE.,
+#CMM)
+#CMM? temp_EvPrRn=0.,
+#CMM? implicSurfPress = 0.6,
+#CMM? implicDiv2DFlow = 0.6,
+#END 2190
+#
+ rhonil=1035.,
+ rhoConstFresh=1000.,
+ gravity=9.81,
+ eosType = 'JMD95Z',
+ implicitDiffusion=.true.,
+ implicitViscosity=.true.,
+ implicitFreeSurface=.true.,
+ convertFW2Salt = -1.,
+ useRealFreshWaterFlux=.FALSE.,
+ useCDscheme=.FALSE.,
+ useSingleCpuIO=.TRUE.,
+ vectorInvariantMomentum=.TRUE.,
+ staggerTimeStep=.TRUE.,
+ multiDimAdvection=.TRUE.,
+ tempAdvScheme=33,
+ saltAdvScheme=33,
+ useNHMTerms=.FALSE.,
+# turn on lopped cells
+ hFacMin=0.3,
+ hFacMindz=50.,
+# set precision of data files
+ readBinaryPrec=32,
+ writeBinaryPrec=32,
+ globalfiles=.FALSE.,
+ rotationPeriod=86164.,
+ debugLevel=0,
+ /
+
+# Elliptic solver parameters
+ &PARM02
+ cg2dMaxIters = 300,
+ cg2dTargetResidual=1.E-8,
+ /
+
+# Time stepping parameters
+ &PARM03
+#2005a 2005b
+ nIter0 =   0,
+# nIter0 = 52560,
+#2006a 2006b
+# nIter0 = 105120,
+# nIter0 = 157680,
+# nIter0 = 210240,
+# nIter0 = 262800,
+# nIter0 = 315360,
+# nIter0 = 367920,
+# nTimeSteps =  86401,
+# nTimeSteps =  1441,
+ nTimeSteps = 100,
+ deltaTmom   = 300.0,
+ deltaTtracer= 300.0,
+ deltaTClock = 300.0,
+ pickupStrictlyMatch=.FALSE.,
+ dumpInitAndLast=.FALSE.,
+# pChkptFreq= 300.,
+ pChkptFreq= 15768000.,
+# pChkptFreq= 13046400.,
+ writePickupAtEnd=.FALSE.,
+ dumpFreq=   0.,
+ taveFreq=   0.,
+# diagFreq=    2629830.,
+ adjDumpFreq=  3600.,
+ monitorFreq= 21600,
+ forcing_In_AB = .FALSE.,
+ momDissip_In_AB=.FALSE.,
+#when using ab2:
+# abEps = 0.1,
+#when using ab3:
+ doAB_onGtGs=.FALSE.,
+ alph_AB=0.5,
+ beta_AB=0.281105,
+ /
+
+# Gridding parameters
+ &PARM04
+ usingCartesianGrid=.FALSE.,
+ usingSphericalPolarGrid=.TRUE.,
+ delX=86*4.15,
+ delY=0.01795638, 0.01927532, 0.0206854 , 0.02219116, 0.0237978 ,
+       0.0255097 , 0.02733112, 0.0292658 , 0.03131702, 0.03348694,
+       0.03577654, 0.03818546, 0.04071112, 0.04334908, 0.04609184,
+       0.04892866, 0.0518454 , 0.05482352, 0.05783998, 0.06086704,
+       0.0638719 , 0.06681704, 0.06966072, 0.11588922, 0.4704592,
+ delZ= 2, 2.2, 2.4, 2.6,
+       2.8, 3.1, 3.3, 3.6, 4, 4.5, 4.5, 5, 5, 5,
+       5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+       5, 5, 5, 5, 5, 5, 5, 5, 6, 7,
+       8, 9, 10, 10, 10, 10, 10, 10, 10, 10,
+       10, 10, 10, 10, 10, 12, 14, 16, 18, 20,
+       22, 23, 25, 25, 25, 25, 25, 28, 32, 40,
+       50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
+       65, 85, 100, 100, 100, 100, 100, 100, 100, 120,
+       140, 160, 180, 200, 200, 200, 200, 200, 200, 200,
+       200, 200, 200, 200, 200, 200, 200, 200, 200, 200,
+  ygOrigin = -78.0,
+  xgOrigin = 0.0,
+ /
+
+# Input datasets
+ &PARM05
+  bathyFile = 'mini_bathy.bin',
+ /

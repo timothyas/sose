@@ -1,0 +1,32 @@
+#
+# ***************
+# Open boundaries
+# ***************
+ &OBCS_PARM01
+ OB_Jnorth=   86*25,
+#
+ useOrlanskiNorth=.FALSE.,
+ useOBCSsponge=.TRUE.,
+ useLinearSponge    =.TRUE.,
+ OBCSsponge_Salt=.FALSE.,
+ OBCSsponge_Theta=.FALSE.,
+ useOBCSbalance=.TRUE.,
+ useOBCSprescribe=.FALSE.,
+#
+#
+ /
+
+# *****************************************
+# Orlanski Boundary Condition Parameters.
+# *****************************************
+ &OBCS_PARM02
+# cvelTimeScale = 2000.,
+ /
+
+# *****************************************
+# Sponge Layer Parameters.
+# *****************************************
+ &OBCS_PARM03
+ spongeThickness=2,
+ /
+
