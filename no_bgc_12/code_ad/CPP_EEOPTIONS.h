@@ -151,7 +151,7 @@ C     allow to import and export from/to Coupler interface.
 
 CMM(
 CMM #define TARGET_CRAYXT
-#undef SINGLE_DISK_IO
+#define SINGLE_DISK_IO
 CMM)
 
 #endif /* _CPP_EEOPTIONS_H_ */
