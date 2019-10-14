@@ -38,6 +38,11 @@ NOOPTFLAGS='-O1 -fp-model precise'
 # For depth sensitivity...
 FFLAGS="$FFLAGS $EXTENDED_SRC_FLAG"
 
+# for SOSE at 1/12 degree, need double precision integers
+# because the domain size (Nx*Ny*Nz) is larger than the largest single precision int.
+# can't do this without some MPI run time problems :( 
+#FFLAGS="$FFLAGS -i8"
+
 if test "x$IEEE" = x ; then
     #  No need for IEEE-754
     FFLAGS="$FFLAGS -fPIC -W0 -WB -convert big_endian -assume byterecl -align"
